@@ -1,0 +1,120 @@
+security:
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: "auto"
+
+  enable_authenticator_manager: true
+  providers:
+    users:
+      entity:
+        class: App\Entity\User
+        property: email
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt))/
+      security: false
+
+    login:
+      stateless: true
+      json_login:
+        check_path: /auth # The name in routes.yaml is enough for mapping
+        username_path: email
+        password_path: password
+        success_handler: lexik_jwt_authentication.handler.authentication_success
+        failure_handler: lexik_jwt_authentication.handler.authentication_failure
+      jwt: ~
+
+    users:
+      pattern: ^/hr/users
+      methods: [PUT, PATCH, DELETE]
+      stateless: true
+    brands:
+      pattern: ^/hr/brands
+      methods: [GET, POST, PUT, PATCH, DELETE]
+      stateless: true
+    chats:
+      pattern: ^/hr/chats
+      methods: [POST, PATCH]
+      stateless: true
+    trajets:
+      pattern: ^/hr/trajets
+      methods: [POST, PUT, PATCH, DELETE]
+      stateless: true
+    adresses:
+      pattern: ^/hr/adresses
+      methods: [POST, PUT, PATCH, DELETE]
+      stateless: true
+    reservations:
+      pattern: ^/hr/reservations
+      methods: [POST, PUT, PATCH, DELETE]
+      stateless: true
+    avis:
+      pattern: ^/hr/avis
+      methods: [POST, PATCH]
+      stateless: true
+    favoris:
+      pattern: ^/hr/favoris
+      methods: [POST, DELETE]
+      stateless: true
+    verifyemail:
+      pattern: ^/verify/email
+      stateless: true
+      # anonymous: true
+
+    # logout:
+    #          path: app_logout
+
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  access_control:
+    - { path: ^/auth, roles: PUBLIC_ACCESS }
+    # - { path: ^/verify/email, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/verify/email, roles: PUBLIC_ACCESS }
+    #- { path: ^/hr,       roles: IS_AUTHENTICATED_FULLY }
+    - {
+        path: ^/hr/profil/,
+        # roles: PUBLIC_ACCESS,
+        roles: IS_AUTHENTICATED_FULLY,
+        # methods: [GET],
+      }
+    - {
+        path: ^/hr/brands,
+        # roles: PUBLIC_ACCESS,
+        roles: IS_AUTHENTICATED_FULLY,
+        methods: [GET],
+      }
+    - {
+        path: ^/hr/users,
+        roles: IS_AUTHENTICATED_FULLY,
+        methods: [PUT, PATCH, DELETE],
+      }
+    - {
+        path: ^/hr/chats,
+        roles: IS_AUTHENTICATED_FULLY,
+        methods: [POST, PATCH],
+      }
+    - {
+        path: ^/hr/trajets,
+        roles: IS_AUTHENTICATED_FULLY,
+        methods: [POST, PUT, PATCH, DELETE],
+      }
+    - {
+        path: ^/hr/adresses,
+        roles: IS_AUTHENTICATED_FULLY,
+        methods: [POST, PUT, PATCH, DELETE],
+      }
+    - {
+        path: ^/hr/reservations,
+        roles: IS_AUTHENTICATED_FULLY,
+        methods: [POST, PUT, PATCH, DELETE],
+      }
+    - { path: ^/hr/avis, roles: IS_AUTHENTICATED_FULLY, methods: [POST, PATCH] }
+    - {
+        path: ^/hr/favoris,
+        roles: IS_AUTHENTICATED_FULLY,
+        methods: [POST, DELETE],
+      }
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true

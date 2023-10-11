@@ -1,0 +1,7 @@
+# App\Dto\UserSignupRequest:
+#     properties:
+#         email:
+#             - NotBlank: ~
+#             - Email: { mode: strict }
+#         captcha:
+#             - Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3: ~

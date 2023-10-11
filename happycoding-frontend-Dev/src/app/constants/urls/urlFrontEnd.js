@@ -1,0 +1,23 @@
+export const URL_HOME = '/';
+export const URL_LOGIN = '/auth';
+export const URL_ADMIN_HOME = '/admin';
+export const URL_REGISTER = '/signup';
+export const URL_CONTACT = '/contact';
+export const URL_LOGOUT = '/logout';
+export const URL_SEARCHTRIP = '/searchtrip';
+export const URL_SUGGESTTRIP = '/suggestrip';
+export const URL_ASKTRIP = '/asktrip';
+export const URL_ACCEPTTRIP = '/accepttrip';
+export const URL_CURRENTTRIP = '/currenttrip';
+export const URL_RATETRIP = '/ratetrip';
+export const URL_ROADHISTORY = '/roadhistory';
+export const URL_CHAT = '/chat';
+export const URL_CHATPAGE = '/chats';
+export const URL_CHATHISTORY = '/chathistory';
+export const URL_COMMENT = '/comment';
+export const URL_FAVORITES = '/favorite';
+export const URL_ACCOUTMANAGEMENT = '/gestion';
+export const URL_PROFILE = '/profil';
+export const URL_FORGOTPASSWORD = '/forgotpassword';
+export const URL_MODIFPASSWORD = '/modifpassword';
+

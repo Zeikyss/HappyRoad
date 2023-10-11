@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "photo": "src/app/assets/img/profils/avatar_9876543210.jpg",
+        "pseudoM": "Ryan",
+        "pseudoF": "Jodie",
+        "note": "4/5",
+        "depart": "Arras",
+        "adresseD": "Place Foch",
+        "arrivee": "Lille",
+        "adresseA": "Place de la Gare",
+        "date": "10/05/2023",
+        "heure": "8h30",
+        "option1": "Non fumeur",
+        "option2": "Silence",
+        "option3": "2 petits bagages",
+        "cout": "54 points",
+        "marque": "Chevrolet",
+        "modele": "Malibu",
+        "nbPlaces": "4",
+        "photoVoiture": "src/app/assets/img/voitures/car_0123456789.png"
+    }
+]
